@@ -6,20 +6,37 @@
     All other values are read as a basic proposition. For example 'a==b' is read as basic propositions 'a' and 'b', joined by '=='. But 'a=b' is read as a single basic proposition. Order of operations is assumed left-to-right unless parentheses are used.</p>
 </div>
 
-<form action="/generateTruthTable/submit" method="POST">
-  <div id="input0">
-    <label for="prop1">Enter a proposition</label>
-    <input type="text" id="prop0" name ="propositions[0]">
+<form action="/generateTruthTable/submit" method="POST" class="col-4">
+  <div id="input0" class="mb-3">
+    <label for="prop1" class="form-label">Enter a proposition</label>
+    <input type="text" class="form-control" id="prop0" name ="propositions[0]">
   </div>
   <div id="propInputs">
   </div>
   
-  <div class="btn btn-success" id="addProp">Add another proposition</div>
+  <div class="btn btn-success mb-3" id="addProp">Add another proposition</div>
   
-  <button class="btn btn-primary" id="createTable">Generate Table</button>
+  <div class="mb-3">
+    <button class="btn btn-primary" id="createTable">Generate Table</button>
+  </div>
   
   <div id="table">
-  
+
+      <% console.log(table) %>
+      <% if(table) {%>
+      <table>
+        <% for (let i = 0; i < table.length; i++) { %> 
+          <tr>
+            <% for (let j = 0; j < table[i].length; j++) { %>
+              <td>
+                <%= table[i][j] %>
+              </td>
+             <% } %> 
+          </tr>
+        <% } %>
+      </table>
+      <% } %>
+
   </div>
 
 </form>
