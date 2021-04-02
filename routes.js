@@ -10,4 +10,8 @@ router.get('/projects', controllers.projects);
 router.get('/generateTruthTable', controllers.generateTruthTable);
 
 
+
+router.post('/generateTruthTable/submit', controllers.submit)
+
+
 module.exports = router;

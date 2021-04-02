@@ -1,16 +1,28 @@
 <% layout('boilerplate') %>
 
-<div id="input0">
-  <label for="prop1">Enter a proposition</label>
-  <input id="prop1" type="text">
+<div>
+  <p>
+    Symbols: '~': negation, '&': conjunction, '|': disjunction, '->': conditional, '==': biconditional
+    All other values are read as a basic proposition. For example 'a==b' is read as basic propositions 'a' and 'b', joined by '=='. But 'a=b' is read as a single basic proposition. Order of operations is assumed left-to-right unless parentheses are used.</p>
 </div>
 
-<div id="propInputs">
-</div>
+<form action="/generateTruthTable/submit" method="POST">
+  <div id="input0">
+    <label for="prop1">Enter a proposition</label>
+    <input type="text" id="prop0" name ="propositions[0]">
+  </div>
+  <div id="propInputs">
+  </div>
+  
+  <div class="btn btn-success" id="addProp">Add another proposition</div>
+  
+  <button class="btn btn-primary" id="createTable">Generate Table</button>
+  
+  <div id="table">
+  
+  </div>
 
-<button class="btn btn-success" id="addProp">Add another proposition</button>
-<button class="btn btn-primary" id="createTable">Generate Table</button>
+</form>
 
-<div id="table">
 
-</div>
+<script src="/javascripts/createInputField.js"></script>
