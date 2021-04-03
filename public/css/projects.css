@@ -1,0 +1,15 @@
+.project-picture{
+  max-width: 450px;
+  height: auto;
+}
+
+@media (min-width: 992px) { 
+  .project-description {
+    position: relative;
+  }
+  
+  .project-links {
+    position: absolute;
+    bottom: 0px;
+  }
+}
