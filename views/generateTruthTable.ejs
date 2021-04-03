@@ -1,45 +1,78 @@
-<% layout('boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Simoncic's Portfolio</title>
 
-<div>
-  <p>
-    Symbols: '~': negation, '&': conjunction, '|': disjunction, '->': conditional, '==': biconditional
-    All other values are read as a basic proposition. For example 'a==b' is read as basic propositions 'a' and 'b', joined by '=='. But 'a=b' is read as a single basic proposition. Order of operations is assumed left-to-right unless parentheses are used.</p>
-</div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"   href="/css/generateTruthTable.css">
+</head>
 
-<form action="/generateTruthTable/submit" method="POST" class="col-4">
-  <div id="input0" class="mb-3">
-    <label for="prop1" class="form-label">Enter a proposition</label>
-    <input type="text" class="form-control" id="prop0" name ="propositions[0]">
-  </div>
-  <div id="propInputs">
-  </div>
-  
-  <div class="btn btn-success mb-3" id="addProp">Add another proposition</div>
-  
-  <div class="mb-3">
-    <button class="btn btn-primary" id="createTable">Generate Table</button>
-  </div>
-  
-  <div id="table">
+<body>
+  <main class="container">
+    <h3 class="text-center my-4">Truth Table Generator</h1>
+      <div class="col-lg-10 offset-lg-1">
+        <h6>Symbols</h6>
+          <ul>
+            <li>'~' : negation (not)</li>
+            <li>'&' : conjunction (and)</li>
+            <li>'|' : disjunction (or)</li>
+            <li>'->' : conditional (if...then)</li>
+            <li>'==' : biconditional (if and only if)</li>
+          </ul>
+          <p>All other values are read as a basic proposition. For example 'a==b' is read as basic propositions 'a' and 'b', joined by '=='.  
+            But 'a=b' is read as a single basic proposition. Order of operations is assumed left-to-right unless parentheses are used.</p>
+      </div>
+      
+      <form action="/generateTruthTable/submit" method="POST" class="col-lg-3 offset-lg-1 col-6">
+        <div id="input0" class="mb-3">
+          <label for="prop1" class="form-label">Enter a proposition</label>
+          <input type="text" class="form-control" id="prop0" name ="propositions[0]">
+        </div>
+        <div id="propInputs">
+        </div>
+        
+        <div class="btn btn-success mb-4" id="addProp">Add another proposition</div>
+        
+        <div class="mb-3">
+          <button class="btn btn-primary" id="createTable">Generate Table</button>
+        </div>
 
-      <% console.log(table) %>
-      <% if(table) {%>
-      <table>
-        <% for (let i = 0; i < table.length; i++) { %> 
-          <tr>
-            <% for (let j = 0; j < table[i].length; j++) { %>
-              <td>
-                <%= table[i][j] %>
-              </td>
-             <% } %> 
-          </tr>
+        <% if (valid) { %>
+          <div id="table" class="mb-5">
+              
+            <% if(filteredProps) { %>
+              <h6>Propositions</h6>
+              <ol>
+                <% for (let i = 0; i< filteredProps.length; i++) { %>
+                  <li>
+                    <%= filteredProps[i] %>
+                  </li>
+                <% } %>
+              </ol>
+            <% } %>
+            <% if(table) {%>
+              <table>
+                <% for (let i = 0; i < table.length; i++) { %> 
+                  <tr>
+                    <% for (let j = 0; j < table[i].length; j++) { %>
+                      <td>
+                        <p>
+                          <%= table[i][j] %>
+                        </p>
+                      </td>
+                      <% } %> 
+                  </tr>
+                <% } %>
+              </table>
+            <% } %>
+          </div>
+        <% } else { %>
+          <h6>Invalid input</h6>
         <% } %>
-      </table>
-      <% } %>
-
-  </div>
-
-</form>
-
-
-<script src="/javascripts/createInputField.js"></script>
+      </form>
+      <script src="/javascripts/createInputField.js"></script>
+  </main>
+</body>
+</html>
