@@ -3,9 +3,9 @@ const router = express.Router({mergeParams: true});
 const controllers = require('./controllers');
 
 
-router.get('/', controllers.home);
+//router.get('/', controllers.home);
 
-router.get('/projects', controllers.projects);
+router.get('/', controllers.projects);
 
 router.get('/generateTruthTable', controllers.generateTruthTable);
 

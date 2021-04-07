@@ -1,6 +1,10 @@
-#ttg-picture{
-  max-width: 450px;
-  height: auto;
+body {
+  /*background pattern from Toptal Subtle Patterns, url : https://www.toptal.com/designers/subtlepatterns/qbkls-pattern/ */
+  background-image: url('../qbkls.png');
+}
+
+img {
+  border: 1px solid black;
 }
 
 @media (min-width: 992px) { 
