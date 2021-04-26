@@ -12,6 +12,7 @@ img {
 @media (min-width: 992px) { 
   .description-container{
     margin-left: 4rem;
+    min-height: 12rem;
   }
   .project-description {
     position: relative;
