@@ -7,7 +7,12 @@ img {
   border: 1px solid black;
 }
 
+
+
 @media (min-width: 992px) { 
+  .description-container{
+    margin-left: 4rem;
+  }
   .project-description {
     position: relative;
   }
