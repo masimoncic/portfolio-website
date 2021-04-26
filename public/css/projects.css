@@ -14,12 +14,4 @@ img {
     margin-left: 4rem;
     min-height: 12rem;
   }
-  .project-description {
-    position: relative;
-  }
-  
-  .project-links {
-    position: absolute;
-    bottom: 10px;
-  }
 }
